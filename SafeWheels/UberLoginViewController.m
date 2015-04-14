@@ -25,6 +25,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)uberButtonClicked:(id)sender {
+    NSLog(@"Poop");
+}
+
 /*
 #pragma mark - Navigation
 

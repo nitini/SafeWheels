@@ -24,6 +24,9 @@
                                 <state key="normal" title="Login to Uber">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="uberButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aK8-8W-COo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
