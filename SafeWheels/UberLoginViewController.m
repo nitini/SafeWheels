@@ -8,6 +8,7 @@
 
 #import "UberLoginViewController.h"
 #import <Parse/Parse.h>
+#import "NXOAuth2.h"
 
 @interface UberLoginViewController ()
 
@@ -26,7 +27,8 @@
 }
 
 - (IBAction)uberButtonClicked:(id)sender {
-    NSLog(@"Poop");p
+    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"Uber"];
+    NSLog(@"Poop");
 }
 
 /*

@@ -30,6 +30,8 @@
 		B37E07DB1ADCAFDA0041410D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07D01ADCAFDA0041410D /* Security.framework */; };
 		B37E07DC1ADCAFDA0041410D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07D11ADCAFDA0041410D /* StoreKit.framework */; };
 		B37E07DD1ADCAFDA0041410D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07D21ADCAFDA0041410D /* SystemConfiguration.framework */; };
+		B37E07DF1ADCE36D0041410D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07DE1ADCE36D0041410D /* Accounts.framework */; };
+		B37E07E11ADCE3760041410D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07E01ADCE3760041410D /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		B37E07D01ADCAFDA0041410D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B37E07D11ADCAFDA0041410D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B37E07D21ADCAFDA0041410D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B37E07DE1ADCE36D0041410D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		B37E07E01ADCE3760041410D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FAB2C219529F1E3FBCDD78D0 /* Pods-SafeWheels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeWheels.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeWheels/Pods-SafeWheels.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B37E07E11ADCE3760041410D /* Social.framework in Frameworks */,
+				B37E07DF1ADCE36D0041410D /* Accounts.framework in Frameworks */,
 				B37E07D31ADCAFDA0041410D /* AudioToolbox.framework in Frameworks */,
 				B37E07D41ADCAFDA0041410D /* CFNetwork.framework in Frameworks */,
 				B37E07D51ADCAFDA0041410D /* CoreGraphics.framework in Frameworks */,
@@ -112,6 +118,8 @@
 		949693507E182AB4B6A0AB23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B37E07E01ADCE3760041410D /* Social.framework */,
+				B37E07DE1ADCE36D0041410D /* Accounts.framework */,
 				10CB28C546E123B0AB94BF9D /* libPods-SafeWheels.a */,
 			);
 			name = Frameworks;
