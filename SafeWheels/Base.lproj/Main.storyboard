@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Uber Login View Controller-->
@@ -17,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaR-rF-uSH">
-                                <rect key="frame" x="242" y="285" width="117" height="30"/>
+                                <rect key="frame" x="16" y="28" width="117" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="hUd-g7-OYK"/>
+                                    <constraint firstAttribute="width" constant="117" id="tNz-kD-cbW"/>
                                 </constraints>
                                 <state key="normal" title="Login to Uber">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -28,11 +29,23 @@
                                     <action selector="uberButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aK8-8W-COo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGl-Di-B7d">
+                                <rect key="frame" x="255" y="279" width="90" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="pWt-wQ-t6B"/>
+                                </constraints>
+                                <state key="normal" title="Get Info">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VaR-rF-uSH" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ZqM-r5-jME"/>
-                            <constraint firstItem="VaR-rF-uSH" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="dqu-dr-1vo"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="9Oj-fC-B7M"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="dn6-xh-B5h"/>
+                            <constraint firstItem="VaR-rF-uSH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="n9C-SS-nzr"/>
+                            <constraint firstItem="VaR-rF-uSH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="p6S-lk-BU0"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="259" id="rpq-bf-4JW"/>
                         </constraints>
                     </view>
                 </viewController>

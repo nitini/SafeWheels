@@ -28,13 +28,6 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    [[NXOAuth2AccountStore sharedStore] setClientID:@"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs"
-                                             secret:@"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3"
-                                   authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/authorize"]
-                                           tokenURL:[NSURL URLWithString:@"https://login.uber.com/oauth/token"]
-                                        redirectURL:[NSURL URLWithString:@"http://localhost:7000/submit"]
-                                     forAccountType:@"Uber"];
-    
     return YES;
 }
 

@@ -9,16 +9,23 @@
 #import "UberLoginViewController.h"
 #import <Parse/Parse.h>
 #import "NXOAuth2.h"
+#import "UberKit.h"
 
-@interface UberLoginViewController ()
-
+@interface UberLoginViewController () <UIWebViewDelegate, UberKitDelegate>
+@property(strong, nonatomic) UberKit* uberKit;
+@property (strong, nonatomic) NSString* access_token;
 @end
 
 @implementation UberLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _uberKit = [[UberKit alloc] initWithClientID:@"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs"
+                                        ClientSecret:@"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3"
+                                             RedirectURL:@"http://localhost"
+                                         ApplicationName:@"SafeWheels_v1"];
+    _uberKit.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,8 +34,22 @@
 }
 
 - (IBAction)uberButtonClicked:(id)sender {
-    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"Uber"];
-    NSLog(@"Poop");
+    [_uberKit startLogin];
+}
+
+- (void) uberKit: (UberKit *) uberKit didReceiveAccessToken: (NSString *) accessToken
+{
+    NSLog(@"Successfully got access token");
+    _access_token = [_uberKit getStoredAuthToken];
+}
+- (void) uberKit: (UberKit *) uberKit loginFailedWithError: (NSError *) error
+{
+    NSLog(@"%@", error);
+}
+
+- (void)webViewDidFinishLoad:(UIWebView*)webView
+{
+    
 }
 
 /*
