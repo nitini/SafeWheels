@@ -41,23 +41,29 @@
                                     <action selector="uberAPIClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Qwb-MC-bGN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-XD-WKp">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-XD-WKp">
                                 <rect key="frame" x="228" y="149" width="144" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="GZR-a4-896"/>
+                                </constraints>
                                 <state key="normal" title="Making Requests">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="makeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jdG-Po-oVC"/>
+                                    <action selector="makeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kDc-9b-ES6"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nO7-XD-WKp" firstAttribute="centerX" secondItem="TGl-Di-B7d" secondAttribute="centerX" id="1Uz-12-EzP"/>
                             <constraint firstItem="TGl-Di-B7d" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="259" id="dhW-UK-Ob8"/>
                             <constraint firstItem="TGl-Di-B7d" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="gs3-l8-5M6"/>
                             <constraint firstItem="VaR-rF-uSH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="n9C-SS-nzr"/>
                             <constraint firstItem="TGl-Di-B7d" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="nb6-7e-8AC"/>
                             <constraint firstItem="VaR-rF-uSH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="p6S-lk-BU0"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="top" secondItem="nO7-XD-WKp" secondAttribute="bottom" constant="84" id="q07-ps-owT"/>
+                            <constraint firstItem="nO7-XD-WKp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="129" id="vvi-sN-fZz"/>
                         </constraints>
                     </view>
                 </viewController>
