@@ -11,7 +11,7 @@
 #import "NXOAuth2.h"
 #import "UberKit.h"
 
-@interface UberLoginViewController () <UIWebViewDelegate, UberKitDelegate>
+@interface UberLoginViewController () <UberKitDelegate>
 @property(strong, nonatomic) UberKit* uberKit;
 @property (strong, nonatomic) NSString* access_token;
 @end
@@ -33,24 +33,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (IBAction)uberButtonClicked:(id)sender {
     [_uberKit startLogin];
 }
+
+
+- (IBAction)uberAPIClicked:(id)sender {
+    [_uberKit getUserActivityWithCompletionHandler:^(NSArray *activities, NSURLResponse *response, NSError *error)
+     {
+         if(!error)
+         {
+             UberActivity *activity = [activities objectAtIndex:2];
+             NSLog(@"Last trip distance %f", activity.distance);
+            
+         }
+         else
+         {
+             NSLog(@"Error %@", error);
+         }
+     }];}
+
 
 - (void) uberKit: (UberKit *) uberKit didReceiveAccessToken: (NSString *) accessToken
 {
     NSLog(@"Successfully got access token");
     _access_token = [_uberKit getStoredAuthToken];
 }
+
+
+
 - (void) uberKit: (UberKit *) uberKit loginFailedWithError: (NSError *) error
 {
     NSLog(@"%@", error);
 }
 
-- (void)webViewDidFinishLoad:(UIWebView*)webView
-{
-    
-}
 
 /*
 #pragma mark - Navigation

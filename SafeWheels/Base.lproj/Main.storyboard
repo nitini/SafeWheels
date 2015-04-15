@@ -32,20 +32,32 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGl-Di-B7d">
                                 <rect key="frame" x="255" y="279" width="90" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="pWt-wQ-t6B"/>
+                                    <constraint firstAttribute="width" constant="90" id="WoZ-cU-Fpy"/>
                                 </constraints>
                                 <state key="normal" title="Get Info">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="uberAPIClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Qwb-MC-bGN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-XD-WKp">
+                                <rect key="frame" x="228" y="149" width="144" height="46"/>
+                                <state key="normal" title="Making Requests">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="makeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jdG-Po-oVC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TGl-Di-B7d" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="9Oj-fC-B7M"/>
-                            <constraint firstItem="TGl-Di-B7d" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="dn6-xh-B5h"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="259" id="dhW-UK-Ob8"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="gs3-l8-5M6"/>
                             <constraint firstItem="VaR-rF-uSH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="n9C-SS-nzr"/>
+                            <constraint firstItem="TGl-Di-B7d" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="nb6-7e-8AC"/>
                             <constraint firstItem="VaR-rF-uSH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="p6S-lk-BU0"/>
-                            <constraint firstItem="TGl-Di-B7d" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="259" id="rpq-bf-4JW"/>
                         </constraints>
                     </view>
                 </viewController>
