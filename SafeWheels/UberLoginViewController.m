@@ -7,15 +7,17 @@
 //
 
 #import "UberLoginViewController.h"
-#import <Parse/Parse.h>
+#import "Parse/Parse.h"
+#import "ParseUI/ParseUI.h"
 #import "NXOAuth2.h"
 #import "UberKit.h"
 
-@interface UberLoginViewController () <UberKitDelegate>
+
+@interface UberLoginViewController () <UberKitDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 @property(strong, nonatomic) UberKit* uberKit;
 @property (strong, nonatomic) NSString* access_token;
 @property (strong, nonatomic) NSString* server_token;
-@property (strong, nonatomic) NSString* uberProductId;
+@property (strong, nonatomic) NSString* perma_access_token;
 
 @end
 
@@ -23,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _perma_access_token = @"ey9MkOWb1k2aTIWnJGoLUpYSPjAX2c";
     _uberKit = [[UberKit alloc] initWithClientID:@"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs"
                                         ClientSecret:@"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3"
                                              RedirectURL:@"http://localhost"
@@ -37,49 +41,54 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }
+
+}
+
 
 
 - (IBAction)uberButtonClicked:(id)sender {
     [_uberKit startLogin];
 }
 
-
-- (IBAction)uberAPIClicked:(id)sender {
-    [_uberKit getUserActivityWithCompletionHandler:^(NSArray *activities, NSURLResponse *response, NSError *error)
-     {
-         if(!error)
-         {
-             UberActivity *activity = [activities objectAtIndex:2];
-             NSLog(@"Last trip distance %f", activity.distance);
-            
-         }
-         else
-         {
-             NSLog(@"Error %@", error);
-         }
-     }];}
-
-
 - (void) uberKit: (UberKit *) uberKit didReceiveAccessToken: (NSString *) accessToken
 {
-    NSLog(@"Successfully got access token");
     _access_token = [_uberKit getStoredAuthToken];
 }
 
-- (void)getProductId:(CLLocation*)startLocation
+- (NSArray*)getUbersAvailableAtLocation:(CLLocation*)startLocation
 {
     [_uberKit getProductsForLocation:startLocation withCompletionHandler:^(NSArray *products, NSURLResponse *response, NSError *error)
      {
          if(!error)
          {
-             UberProduct *product = [products objectAtIndex:0];
-             _uberProductId = product.product_id;
+             
          }
          else
          {
              NSLog(@"Error %@", error);
          }
      }];
+    
+    return @[@"1a150e95-d687-454b-9878-2942a9448693", @"UberXL", @"UberSUV", @"UberBlack"];
+    
 }
 
 
@@ -87,14 +96,14 @@
 - (IBAction)makeRequest:(id)sender {
     CLLocation *startLocation = [[CLLocation alloc] initWithLatitude:39.954693 longitude:-75.201137];
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:39.962584 longitude:-75.1688];
-    [self getProductId:startLocation];
+    NSArray* ubersAvailable = [self getUbersAvailableAtLocation:startLocation];
     
-    [self makeUberRequest:_uberProductId
+    
+    [self makeUberRequest:[ubersAvailable objectAtIndex:0]
                 start_lat:(float)startLocation.coordinate.latitude
                start_long:(float)startLocation.coordinate.longitude
                   end_lat:(float)endLocation.coordinate.latitude
                  end_long:(float)endLocation.coordinate.longitude];
-    
     
 }
 
@@ -102,15 +111,12 @@
 - (void) makeUberRequest:(NSString*) product_id start_lat:(float)start_lat start_long:(float)start_long end_lat:(float)end_lat end_long:(float)end_long
 {
 
-    NSString *url = [NSString stringWithFormat:@"https://sandbox-api.uber.com/v1/requests?access_token=%@", _access_token];
+    NSString *url = [NSString stringWithFormat:@"https://sandbox-api.uber.com/v1/requests?access_token=%@", _perma_access_token];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    NSLog(@"This is the product id: %@", @"1a150e95-d687-454b-9878-2942a9448693");
-    NSLog(@"This is the product id: %f", start_lat);
-    NSLog(@"This is the product id: %f", start_long);
     
-    NSDictionary* requestDictionary = @{@"product_id" : @"1a150e95-d687-454b-9878-2942a9448693",
+    NSDictionary* requestDictionary = @{@"product_id" :product_id,
                                         @"start_longitude" : [NSNumber numberWithFloat:start_long],
                                         @"start_latitude" : [NSNumber numberWithFloat:start_lat]
                                         };
@@ -128,8 +134,7 @@
         if(!jsonError)
         {
             for(NSString *key in [authDictionary allKeys]) {
-                NSLog(@"%@", key);
-                NSLog(@"%@",[authDictionary objectForKey:key]);
+                NSLog(@"%@: %@", key,[authDictionary objectForKey:key]);
             }
         }
         else
