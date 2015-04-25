@@ -32,10 +32,11 @@
 		B37E07DD1ADCAFDA0041410D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07D21ADCAFDA0041410D /* SystemConfiguration.framework */; };
 		B37E07DF1ADCE36D0041410D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07DE1ADCE36D0041410D /* Accounts.framework */; };
 		B37E07E11ADCE3760041410D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07E01ADCE3760041410D /* Social.framework */; };
-		B37E07E71AE4A0860041410D /* SafeRidesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E07E61AE4A0860041410D /* SafeRidesTableViewController.m */; };
 		B37E07EA1AE4A3D10041410D /* AddSafeRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E07E91AE4A3D10041410D /* AddSafeRideViewController.m */; };
 		B37E07ED1AE5D9E90041410D /* SetPickupDropoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E07EC1AE5D9E90041410D /* SetPickupDropoffViewController.m */; };
 		B37E07EF1AE5DF000041410D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07EE1AE5DF000041410D /* MapKit.framework */; };
+		B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */; };
+		B37E08171AE706710041410D /* RideInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08161AE706710041410D /* RideInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,13 +82,15 @@
 		B37E07D21ADCAFDA0041410D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B37E07DE1ADCE36D0041410D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B37E07E01ADCE3760041410D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		B37E07E51AE4A0860041410D /* SafeRidesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SafeRidesTableViewController.h; path = ../SafeRidesTableViewController.h; sourceTree = "<group>"; };
-		B37E07E61AE4A0860041410D /* SafeRidesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SafeRidesTableViewController.m; path = ../SafeRidesTableViewController.m; sourceTree = "<group>"; };
 		B37E07E81AE4A3D10041410D /* AddSafeRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSafeRideViewController.h; sourceTree = "<group>"; };
 		B37E07E91AE4A3D10041410D /* AddSafeRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSafeRideViewController.m; sourceTree = "<group>"; };
 		B37E07EB1AE5D9E90041410D /* SetPickupDropoffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPickupDropoffViewController.h; sourceTree = "<group>"; };
 		B37E07EC1AE5D9E90041410D /* SetPickupDropoffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPickupDropoffViewController.m; sourceTree = "<group>"; };
 		B37E07EE1AE5DF000041410D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B37E080F1AE6F3630041410D /* SafeRidesParseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeRidesParseTableViewController.h; sourceTree = "<group>"; };
+		B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeRidesParseTableViewController.m; sourceTree = "<group>"; };
+		B37E08151AE706710041410D /* RideInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideInfoViewController.h; sourceTree = "<group>"; };
+		B37E08161AE706710041410D /* RideInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideInfoViewController.m; sourceTree = "<group>"; };
 		FAB2C219529F1E3FBCDD78D0 /* Pods-SafeWheels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeWheels.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeWheels/Pods-SafeWheels.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,8 +178,10 @@
 		B37E07951ADCAF0B0041410D /* SafeWheels */ = {
 			isa = PBXGroup;
 			children = (
-				B37E07E51AE4A0860041410D /* SafeRidesTableViewController.h */,
-				B37E07E61AE4A0860041410D /* SafeRidesTableViewController.m */,
+				B37E08151AE706710041410D /* RideInfoViewController.h */,
+				B37E08161AE706710041410D /* RideInfoViewController.m */,
+				B37E080F1AE6F3630041410D /* SafeRidesParseTableViewController.h */,
+				B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */,
 				B37E079A1ADCAF0B0041410D /* AppDelegate.h */,
 				B37E079B1ADCAF0B0041410D /* AppDelegate.m */,
 				B37E07BF1ADCAF360041410D /* UberLoginViewController.h */,
@@ -364,12 +369,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B37E07E71AE4A0860041410D /* SafeRidesTableViewController.m in Sources */,
 				B37E07ED1AE5D9E90041410D /* SetPickupDropoffViewController.m in Sources */,
 				B37E079F1ADCAF0B0041410D /* SafeWheels.xcdatamodeld in Sources */,
+				B37E08171AE706710041410D /* RideInfoViewController.m in Sources */,
 				B37E079C1ADCAF0B0041410D /* AppDelegate.m in Sources */,
 				B37E07EA1AE4A3D10041410D /* AddSafeRideViewController.m in Sources */,
 				B37E07C11ADCAF360041410D /* UberLoginViewController.m in Sources */,
+				B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */,
 				B37E07991ADCAF0B0041410D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

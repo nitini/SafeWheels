@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSString* access_token;
 @property (strong, nonatomic) NSString* server_token;
 @property (strong, nonatomic) NSString* perma_access_token;
-
+@property (strong, nonatomic) NSString* requestId;
 @end
 
 @implementation UberLoginViewController
@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _perma_access_token = @"ey9MkOWb1k2aTIWnJGoLUpYSPjAX2c";
+    _perma_access_token = @"cNirl0W7g5zmAROEroBFLMbqeBpy6L";
     _uberKit = [[UberKit alloc] initWithClientID:@"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs"
                                         ClientSecret:@"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3"
                                              RedirectURL:@"http://localhost"
@@ -71,6 +71,7 @@
 - (void) uberKit: (UberKit *) uberKit didReceiveAccessToken: (NSString *) accessToken
 {
     _access_token = [_uberKit getStoredAuthToken];
+    NSLog(@"%@", _access_token);
 }
 
 - (NSArray*)getUbersAvailableAtLocation:(CLLocation*)startLocation
@@ -125,16 +126,52 @@
 
     NSURLResponse *response = nil;
     NSError *error = nil;
-    NSData *authData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSData *requestData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     if(!error)
     {
         NSError *jsonError = nil;
-        NSDictionary *authDictionary = [NSJSONSerialization JSONObjectWithData:authData options:0 error:&jsonError];
+        NSDictionary *requestResultsDictionary = [NSJSONSerialization JSONObjectWithData:requestData options:0 error:&jsonError];
         if(!jsonError)
         {
-            for(NSString *key in [authDictionary allKeys]) {
-                NSLog(@"%@: %@", key,[authDictionary objectForKey:key]);
+            _requestId = [requestResultsDictionary objectForKey:@"request_id"];
+            for(NSString *key in [requestResultsDictionary allKeys]) {
+                NSLog(@"%@: %@", key,[requestResultsDictionary objectForKey:key]);
+            }
+        }
+        else
+        {
+            NSLog(@"Error retrieving access token %@", jsonError);
+        }
+    }
+    else
+    {
+        NSLog(@"Error in sending request for access token %@", error);
+    }
+}
+- (IBAction)changeRequest:(id)sender {
+    [self getRequestDetails];
+}
+
+
+- (void) getRequestDetails
+{
+    NSString *url = [NSString stringWithFormat:@"https://sandbox-api.uber.com/v1/requests/%@",_requestId];
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", _perma_access_token] forHTTPHeaderField:@"Authorization"];
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *requestDetailsData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if(!error)
+    {
+        NSError *jsonError = nil;
+        NSDictionary *requestDetailsDictionary = [NSJSONSerialization JSONObjectWithData:requestDetailsData options:0 error:&jsonError];
+        if(!jsonError)
+        {
+            for(NSString *key in [requestDetailsDictionary allKeys]) {
+                NSLog(@"%@: %@", key,[requestDetailsDictionary objectForKey:key]);
             }
         }
         else

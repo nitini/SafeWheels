@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Parse/Parse.h"
+#import "ParseUI/ParseUI.h"
 
 @interface AddSafeRideViewController : UIViewController
 @property (nonatomic, readwrite) CLLocationCoordinate2D pickupLocation;
@@ -17,5 +19,8 @@
 @property (strong, nonatomic) NSString* dropoffAddress;
 @property (weak, nonatomic) IBOutlet UITextField *pickupTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dropoffTextField;
+@property (weak, nonatomic) IBOutlet UITextField *rideNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *contactNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *estimatedTimeTextField;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AddSafeRideViewController.h"
 #import "SetPickupDropoffViewController.h"
+#import "SafeRidesParseTableViewController.h"
 
 @interface AddSafeRideViewController ()
 @property BOOL pickup;
@@ -44,6 +45,18 @@
     [self performSegueWithIdentifier:@"addRideSegue" sender:self];
 }
 
+- (IBAction)hitCreateRideButton:(id)sender {
+    if (![_rideNameTextField.text isEqualToString:@""]) {
+         [self performSegueWithIdentifier:@"unwindToSafeRides" sender:self];
+    } else {
+        UIAlertView* incompleteFieldsAlert = [[UIAlertView alloc] initWithTitle:@"Incomplete"
+                                                                        message:@" \n Please fill all fields!"
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"Ok"
+                                                              otherButtonTitles:nil];
+        [incompleteFieldsAlert show];
+    }
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -57,6 +70,30 @@
             dest.addButtonText = @"Set Dropoff";
             dest.pickup = NO;
         }
+    } else if ([segue.identifier isEqualToString:@"unwindToSafeRides"]) {
+        PFObject *safeRide = [PFObject objectWithClassName:@"SafeRide"];
+        NSString* textFieldString = _rideNameTextField.text;
+        safeRide[@"RideName"] = textFieldString;
+        textFieldString = _contactNumberTextField.text;
+        safeRide[@"ContactNumber"] = textFieldString;
+        textFieldString = _estimatedTimeTextField.text;
+        safeRide[@"EstimatedTime"] = [NSNumber numberWithInt:[textFieldString intValue]];
+        safeRide[@"PickupAddress"] = _pickupAddress;
+        safeRide[@"DropoffAddress"] = _dropoffAddress;
+        PFGeoPoint* pickup = [PFGeoPoint geoPointWithLatitude:_pickupLocation.latitude
+                               longitude:_pickupLocation.longitude];
+        safeRide[@"PickupLocation"] = pickup;
+        PFGeoPoint* dropoff = [PFGeoPoint geoPointWithLatitude:_dropoffLocation.latitude
+                                                    longitude:_dropoffLocation.longitude];
+        safeRide[@"DropoffLocation"] = dropoff;
+        
+        [safeRide saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                // The object has been saved.
+            } else {
+                NSLog(@"The error hit was: %@", error);
+            }
+        }];
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pRm-bN-YVm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -29,24 +29,45 @@
                                     <action selector="uberButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aK8-8W-COo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-XD-WKp">
-                                <rect key="frame" x="228" y="149" width="144" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-XD-WKp">
+                                <rect key="frame" x="95" y="136" width="144" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="144" id="GZR-a4-896"/>
+                                    <constraint firstAttribute="height" constant="46" id="mbT-55-ujB"/>
                                 </constraints>
-                                <state key="normal" title="Making Requests">
+                                <state key="normal" title="Make Requests">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="makeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kDc-9b-ES6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-Kh-ujA">
+                                <rect key="frame" x="86" y="190" width="163" height="30"/>
+                                <state key="normal" title="Change Request Status">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pih-rr-56x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRR-UV-MNA">
+                                <rect key="frame" x="99" y="236" width="137" height="30"/>
+                                <state key="normal" title="Get Request Details">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nO7-XD-WKp" firstAttribute="top" secondItem="VaR-rF-uSH" secondAttribute="bottom" constant="78" id="597-OE-DeU"/>
+                            <constraint firstItem="nO7-XD-WKp" firstAttribute="centerX" secondItem="Jqd-Kh-ujA" secondAttribute="centerX" id="FuO-Cm-1rF"/>
+                            <constraint firstItem="Jqd-Kh-ujA" firstAttribute="top" secondItem="nO7-XD-WKp" secondAttribute="bottom" constant="8" symbolic="YES" id="MFC-OE-u8B"/>
+                            <constraint firstItem="Jqd-Kh-ujA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="70" id="Pa3-Ox-8TI"/>
+                            <constraint firstItem="nO7-XD-WKp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="79" id="UCE-sb-pQ7"/>
+                            <constraint firstItem="xRR-UV-MNA" firstAttribute="top" secondItem="Jqd-Kh-ujA" secondAttribute="bottom" constant="16" id="X58-Hj-Vjy"/>
+                            <constraint firstItem="Jqd-Kh-ujA" firstAttribute="centerX" secondItem="xRR-UV-MNA" secondAttribute="centerX" id="Yj3-5Q-iZu"/>
                             <constraint firstItem="VaR-rF-uSH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="n9C-SS-nzr"/>
                             <constraint firstItem="VaR-rF-uSH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="p6S-lk-BU0"/>
-                            <constraint firstItem="nO7-XD-WKp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="129" id="vvi-sN-fZz"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -99,7 +120,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3N-vH-KKl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3N-vH-KKl">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -161,6 +182,9 @@
                                 <state key="normal" title="Create Ride">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="hitCreateRideButton:" destination="eJS-YG-0a5" eventType="touchUpInside" id="jqN-2n-VyS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpW-Tr-jTM">
                                 <rect key="frame" x="59" y="333" width="159" height="30"/>
@@ -219,14 +243,37 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contactNumberTextField" destination="K8Q-R0-6H5" id="3Xc-c2-bTI"/>
                         <outlet property="dropoffTextField" destination="QDQ-e7-L0t" id="piA-II-Fvn"/>
+                        <outlet property="estimatedTimeTextField" destination="AdE-I1-dZh" id="7B4-Mf-VW2"/>
                         <outlet property="pickupTextField" destination="MiG-Yj-Ve4" id="fHc-Vq-2Uf"/>
+                        <outlet property="rideNameTextField" destination="Ibq-9M-5Dq" id="ffZ-z3-kqE"/>
                         <segue destination="hAL-21-eio" kind="show" identifier="addRideSegue" id="sGB-As-9K9"/>
+                        <segue destination="kKs-CG-btj" kind="unwind" identifier="unwindToSafeRides" unwindAction="unwindToSafeRidesTableViewController:" id="6bZ-xP-uB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNx-TA-S7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kKs-CG-btj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2028" y="-555"/>
+        </scene>
+        <!--Ride Info View Controller-->
+        <scene sceneID="esD-nc-eyf">
+            <objects>
+                <viewController id="z9H-xy-q1D" customClass="RideInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zL1-db-7Tv"/>
+                        <viewControllerLayoutGuide type="bottom" id="78Y-xS-QwZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yeE-40-9Tg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CdF-15-Xdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="196"/>
         </scene>
         <!--Set Pickup Dropoff View Controller-->
         <scene sceneID="dDQ-9V-q6M">
@@ -270,19 +317,33 @@
             </objects>
             <point key="canvasLocation" x="2722" y="-555"/>
         </scene>
-        <!--Safe Rides Table View Controller-->
+        <!--Safe Rides Parse Table View Controller-->
         <scene sceneID="cC5-te-ZcM">
             <objects>
-                <tableViewController id="Qgq-Lj-Yo8" customClass="SafeRidesTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Qgq-Lj-Yo8" customClass="SafeRidesParseTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hm4-dn-ANl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oSj-Z3-iQa">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="7B0-XV-CGa" detailTextLabel="B3w-kz-qei" style="IBUITableViewCellStyleSubtitle" id="oSj-Z3-iQa">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oSj-Z3-iQa" id="DCD-KF-yqU">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7B0-XV-CGa">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B3w-kz-qei">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -300,6 +361,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="eJS-YG-0a5" kind="show" identifier="addRideSegue" id="haM-vG-PPJ"/>
+                        <segue destination="z9H-xy-q1D" kind="show" identifier="showRideInfoSegue" id="cM9-IP-GuN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JMf-it-9I2" userLabel="First Responder" sceneMemberID="firstResponder"/>
