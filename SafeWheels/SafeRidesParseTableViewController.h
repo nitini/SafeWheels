@@ -11,6 +11,8 @@
 #import "Parse/Parse.h"
 #import "NXOAuth2.h"
 #import "UberKit.h"
+#import "UberCommands.h"
+#import "RideInfoViewController.h"
 
 @interface SafeRidesParseTableViewController : PFQueryTableViewController
 

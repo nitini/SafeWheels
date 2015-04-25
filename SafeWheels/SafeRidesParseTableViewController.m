@@ -15,22 +15,18 @@
 @property (strong, nonatomic) NSString* server_token;
 @property (strong, nonatomic) NSString* className;
 @property (strong, nonatomic) NSIndexPath* deleteIndexPath;
+@property (strong, nonatomic) NSIndexPath* selectedIndexPath;
 @property (strong, nonatomic) NSString* alertViewFunction;
+@property (strong, nonatomic) UberCommands* uberController;
 @end
 
 @implementation SafeRidesParseTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _perma_access_token = @"ey9MkOWb1k2aTIWnJGoLUpYSPjAX2c";
-    _uberKit = [[UberKit alloc] initWithClientID:@"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs"
-                                    ClientSecret:@"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3"
-                                     RedirectURL:@"http://localhost"
-                                 ApplicationName:@"SafeWheels_v1"];
-    
     _parentPassword = @"password";
-    _uberKit.delegate = self;
-    _server_token = @"2XO_nTpi3YijHxcW03iLsTB_8JyYP4dXD2Gb1xLw";
+    _uberController = [UberCommands getInstance];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -175,6 +171,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _alertViewFunction = @"confirm";
+    _selectedIndexPath = indexPath;
     UIAlertView *confirmALert = [[UIAlertView alloc]
                                  initWithTitle:@"Confirm Ride"
                                  message:@"Are you sure you would like to take this ride?"
@@ -240,7 +237,28 @@
     
     if ([segue.identifier isEqualToString:@"showRideInfoSegue"]) {
         
+        PFObject* ride = [self.objects objectAtIndex:[_selectedIndexPath row]];
+        PFGeoPoint* startLocation = [ride objectForKey:@"PickupLocation"];
+        PFGeoPoint* endLocation = [ride objectForKey:@"DropoffLocation"];
+        NSString* uberProductId = [_uberController getUberProductIdAtLocation:[[CLLocation alloc]
+                                                                               initWithLatitude:startLocation.latitude
+                                                                               longitude:startLocation.longitude] uberType:@"uberX"];
+        
+        NSString* requestId = [_uberController makeUberRequest:uberProductId
+                    start_lat:(float)startLocation.latitude
+                   start_long:(float)startLocation.longitude
+                      end_lat:(float)endLocation.latitude
+                     end_long:(float)endLocation.longitude];
+        NSLog(@"%@", requestId);
+        
+        RideInfoViewController* destController = [segue destinationViewController];
+        destController.requestId = requestId;
+
+        
     }
+    
+    
+    
 }
 
 

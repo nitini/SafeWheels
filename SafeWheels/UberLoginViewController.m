@@ -9,7 +9,6 @@
 #import "UberLoginViewController.h"
 #import "Parse/Parse.h"
 #import "ParseUI/ParseUI.h"
-#import "NXOAuth2.h"
 #import "UberKit.h"
 
 

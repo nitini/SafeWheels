@@ -37,6 +37,7 @@
 		B37E07EF1AE5DF000041410D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07EE1AE5DF000041410D /* MapKit.framework */; };
 		B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */; };
 		B37E08171AE706710041410D /* RideInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08161AE706710041410D /* RideInfoViewController.m */; };
+		B3EF88B41AEB5013007588E5 /* UberCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF88B31AEB5013007588E5 /* UberCommands.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeRidesParseTableViewController.m; sourceTree = "<group>"; };
 		B37E08151AE706710041410D /* RideInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideInfoViewController.h; sourceTree = "<group>"; };
 		B37E08161AE706710041410D /* RideInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideInfoViewController.m; sourceTree = "<group>"; };
+		B3EF88B21AEB5013007588E5 /* UberCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UberCommands.h; sourceTree = "<group>"; };
+		B3EF88B31AEB5013007588E5 /* UberCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UberCommands.m; sourceTree = "<group>"; };
 		FAB2C219529F1E3FBCDD78D0 /* Pods-SafeWheels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeWheels.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeWheels/Pods-SafeWheels.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +181,8 @@
 		B37E07951ADCAF0B0041410D /* SafeWheels */ = {
 			isa = PBXGroup;
 			children = (
+				B3EF88B21AEB5013007588E5 /* UberCommands.h */,
+				B3EF88B31AEB5013007588E5 /* UberCommands.m */,
 				B37E08151AE706710041410D /* RideInfoViewController.h */,
 				B37E08161AE706710041410D /* RideInfoViewController.m */,
 				B37E080F1AE6F3630041410D /* SafeRidesParseTableViewController.h */,
@@ -377,6 +382,7 @@
 				B37E07C11ADCAF360041410D /* UberLoginViewController.m in Sources */,
 				B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */,
 				B37E07991ADCAF0B0041410D /* main.m in Sources */,
+				B3EF88B41AEB5013007588E5 /* UberCommands.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
