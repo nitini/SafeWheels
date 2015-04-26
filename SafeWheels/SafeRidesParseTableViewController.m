@@ -24,9 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setToolbarHidden:NO];
     _parentPassword = @"password";
     _uberController = [UberCommands getInstance];
-    
     
     // Do any additional setup after loading the view.
 }
@@ -250,6 +250,8 @@
                       end_lat:(float)endLocation.latitude
                      end_long:(float)endLocation.longitude];
         NSLog(@"%@", requestId);
+        
+        //ADD BREAKPOINT HERE TO CHANGE REQUEST STATUS
         
         RideInfoViewController* destController = [segue destinationViewController];
         destController.requestId = requestId;

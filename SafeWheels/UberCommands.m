@@ -15,7 +15,7 @@
         _clientId = @"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs";
         _clientSecret = @"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3";
         _serverToken = @"2XO_nTpi3YijHxcW03iLsTB_8JyYP4dXD2Gb1xLw";
-        _permaAccessToken = @"cNirl0W7g5zmAROEroBFLMbqeBpy6L";
+        _permaAccessToken = @"bUXHiu5GJwzancKzUF58mcRa7kaDSN";
         _uberKit = [[UberKit alloc] initWithClientID:self.clientId
                              ClientSecret:self.clientSecret
                               RedirectURL:@"http://localhost"
@@ -32,6 +32,11 @@
         uberController = [[self alloc] init];
     });
     return uberController;
+}
+
+- (void) startUberLogin
+{
+    [_uberKit startLogin];
 }
 
 -(NSString*) makeUberRequest:(NSString*) product_id start_lat:(float)start_lat start_long:(float)start_long end_lat:(float)end_lat end_long:(float)end_long
@@ -74,7 +79,7 @@
 }
 
 
-- (void) getRequestDetails:(NSString*)requestId
+- (NSDictionary*) getRequestDetails:(NSString*)requestId
 {
     NSString *url = [NSString stringWithFormat:@"https://sandbox-api.uber.com/v1/requests/%@",requestId];
     
@@ -88,21 +93,38 @@
     {
         NSError *jsonError = nil;
         NSDictionary *requestDetailsDictionary = [NSJSONSerialization JSONObjectWithData:requestDetailsData options:0 error:&jsonError];
-        if(!jsonError)
-        {
-            for(NSString *key in [requestDetailsDictionary allKeys]) {
-                NSLog(@"%@: %@", key,[requestDetailsDictionary objectForKey:key]);
-            }
-        }
-        else
-        {
-            NSLog(@"Error retrieving access token %@", jsonError);
-        }
+        NSLog(@"%@", requestDetailsDictionary);
+        return requestDetailsDictionary;
+    }
+    else
+    {
+        NSLog(@"Error in sending request for access token %@", error);
+        return [[NSDictionary alloc] initWithObjectsAndKeys:@"Error", @"JSON not receieved", nil];
+    }
+}
+
+- (void) cancelUberRequest:(NSString*)requestId
+{
+    NSString *url = [NSString stringWithFormat:@"https://sandbox-api.uber.com/v1/requests/%@",requestId];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"DELETE"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", _permaAccessToken] forHTTPHeaderField:@"Authorization"];
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *requestDetailsData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSLog(@"%@", response);
+    if(!error)
+    {
+        NSError *jsonError = nil;
+        NSDictionary *requestDetailsDictionary = [NSJSONSerialization JSONObjectWithData:requestDetailsData options:0 error:&jsonError];
+        NSLog(@"%@", requestDetailsDictionary);
     }
     else
     {
         NSLog(@"Error in sending request for access token %@", error);
     }
+
 }
 
 - (NSString*) getUberProductIdAtLocation:(CLLocation*)startLocation uberType:(NSString*)uberType
@@ -138,31 +160,6 @@
     }
     return uberProductId;
 }
-
-/*
-- (NSArray*)getUbersAvailableAtLocation:(CLLocation*)startLocation
-{
-    [_uberKit getProductsForLocation:startLocation withCompletionHandler:^(NSArray *products, NSURLResponse *response, NSError *error)
-     {
-         if(!error)
-         {
-             UberProduct* product = [products objectAtIndex:0];
-             NSString* productId = product.product_id;
-             
-         }
-         else
-         {
-             NSLog(@"Error %@", error);
-         }
-     }];
-    
-    return @[@"1a150e95-d687-454b-9878-2942a9448693", @"UberXL", @"UberSUV", @"UberBlack"];
-    
-}
-*/
-
-
-
 
 - (void) uberKit: (UberKit *) uberKit didReceiveAccessToken: (NSString *) accessToken
 {
