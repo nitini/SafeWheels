@@ -26,11 +26,11 @@
     [super viewDidLoad];
     
     _uberController = [UberCommands getInstance];
+    //REPLACE _requestId below with a hard coded request ID to not have to use python script every time
     _requestDetails = [_uberController getRequestDetails:_requestId];
     NSDictionary* driverDetails =[_requestDetails objectForKey:@"driver"];
     NSDictionary* vehicleDetails = [_requestDetails objectForKey:@"vehicle"];
     _etaInfo.text = [[_requestDetails objectForKey:@"eta"] stringValue];
-    // Do any additional setup after loading the view.
     
     NSURL *driverURL = [NSURL URLWithString:[driverDetails objectForKey:@"picture_url"]];
     NSData *driverURLData = [NSData dataWithContentsOfURL:driverURL];
@@ -43,6 +43,8 @@
     _carPicture.image = [[UIImage alloc] initWithData:carURLData];
     _driverInfo.text = [NSString stringWithFormat:@"%@, %@", [driverDetails objectForKey:@"name"],
                         [driverDetails objectForKey:@"phone_number"]];
+    
+    NSLog(@"Send text message to: %@", [[PFUser currentUser] objectForKey:@"additional"]);
     
 }
 

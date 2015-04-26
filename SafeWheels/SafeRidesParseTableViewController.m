@@ -349,7 +349,7 @@
                      end_long:(float)endLocation.longitude];
         NSLog(@"%@", requestId);
         
-        //ADD BREAKPOINT HERE TO CHANGE REQUEST STATUS
+        //BREAKPOINT HERE TO CHANGE REQUEST STATUS
         
         RideInfoViewController* destController = [segue destinationViewController];
         destController.requestId = requestId;

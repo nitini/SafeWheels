@@ -15,7 +15,8 @@
         _clientId = @"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs";
         _clientSecret = @"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3";
         _serverToken = @"2XO_nTpi3YijHxcW03iLsTB_8JyYP4dXD2Gb1xLw";
-        _permaAccessToken = @"bUXHiu5GJwzancKzUF58mcRa7kaDSN";
+        _permaAccessToken = @"j9TrwQpkzxf3T02djO9XHF77142TER";
+
         _uberKit = [[UberKit alloc] initWithClientID:self.clientId
                              ClientSecret:self.clientSecret
                               RedirectURL:@"http://localhost"
