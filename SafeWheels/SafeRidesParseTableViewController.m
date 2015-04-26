@@ -224,7 +224,15 @@
             [PFUser logOut];
             PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
             [logInViewController setDelegate:self];
+            SafeWheelsSignUpViewController *signUpViewController = [[SafeWheelsSignUpViewController alloc] init];
+            [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+            [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
             [self presentViewController:logInViewController animated:YES completion:NULL];
+           
+            
+            // Assign our sign up controller to be displayed from the login controller
+            [logInViewController setSignUpController:signUpViewController];
+
         }
     } else if([_alertViewFunction isEqualToString:@"edit"]) {
         /*

@@ -5,76 +5,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Uber Login View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="UberLoginViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaR-rF-uSH">
-                                <rect key="frame" x="16" y="28" width="117" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="tNz-kD-cbW"/>
-                                </constraints>
-                                <state key="normal" title="Login to Uber">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uberButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aK8-8W-COo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nO7-XD-WKp">
-                                <rect key="frame" x="95" y="136" width="144" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="mbT-55-ujB"/>
-                                </constraints>
-                                <state key="normal" title="Make Requests">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="makeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kDc-9b-ES6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-Kh-ujA">
-                                <rect key="frame" x="86" y="190" width="163" height="30"/>
-                                <state key="normal" title="Change Request Status">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="changeRequest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pih-rr-56x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRR-UV-MNA">
-                                <rect key="frame" x="99" y="236" width="137" height="30"/>
-                                <state key="normal" title="Get Request Details">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="nO7-XD-WKp" firstAttribute="top" secondItem="VaR-rF-uSH" secondAttribute="bottom" constant="78" id="597-OE-DeU"/>
-                            <constraint firstItem="nO7-XD-WKp" firstAttribute="centerX" secondItem="Jqd-Kh-ujA" secondAttribute="centerX" id="FuO-Cm-1rF"/>
-                            <constraint firstItem="Jqd-Kh-ujA" firstAttribute="top" secondItem="nO7-XD-WKp" secondAttribute="bottom" constant="8" symbolic="YES" id="MFC-OE-u8B"/>
-                            <constraint firstItem="Jqd-Kh-ujA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="70" id="Pa3-Ox-8TI"/>
-                            <constraint firstItem="nO7-XD-WKp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="79" id="UCE-sb-pQ7"/>
-                            <constraint firstItem="xRR-UV-MNA" firstAttribute="top" secondItem="Jqd-Kh-ujA" secondAttribute="bottom" constant="16" id="X58-Hj-Vjy"/>
-                            <constraint firstItem="Jqd-Kh-ujA" firstAttribute="centerX" secondItem="xRR-UV-MNA" secondAttribute="centerX" id="Yj3-5Q-iZu"/>
-                            <constraint firstItem="VaR-rF-uSH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="n9C-SS-nzr"/>
-                            <constraint firstItem="VaR-rF-uSH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="p6S-lk-BU0"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="498" y="-555"/>
-        </scene>
         <!--Add Safe Ride View Controller-->
         <scene sceneID="gzc-7i-evK">
             <objects>
@@ -303,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id0-sI-hMz">
-                                <rect key="frame" x="165" y="446" width="24" height="56"/>
+                                <rect key="frame" x="165" y="446" width="48" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

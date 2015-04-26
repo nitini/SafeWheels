@@ -15,7 +15,6 @@
 		B37E07A71ADCAF0B0041410D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B37E07A61ADCAF0B0041410D /* Images.xcassets */; };
 		B37E07AA1ADCAF0B0041410D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37E07A81ADCAF0B0041410D /* LaunchScreen.xib */; };
 		B37E07B61ADCAF0B0041410D /* SafeWheelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E07B51ADCAF0B0041410D /* SafeWheelsTests.m */; };
-		B37E07C11ADCAF360041410D /* UberLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E07C01ADCAF360041410D /* UberLoginViewController.m */; };
 		B37E07C51ADCAF910041410D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07C21ADCAF910041410D /* Bolts.framework */; };
 		B37E07C61ADCAF910041410D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07C31ADCAF910041410D /* Parse.framework */; };
 		B37E07C71ADCAF910041410D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07C41ADCAF910041410D /* ParseUI.framework */; };
@@ -66,8 +65,6 @@
 		B37E07AF1ADCAF0B0041410D /* SafeWheelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeWheelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37E07B41ADCAF0B0041410D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B37E07B51ADCAF0B0041410D /* SafeWheelsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeWheelsTests.m; sourceTree = "<group>"; };
-		B37E07BF1ADCAF360041410D /* UberLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UberLoginViewController.h; sourceTree = "<group>"; };
-		B37E07C01ADCAF360041410D /* UberLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UberLoginViewController.m; sourceTree = "<group>"; };
 		B37E07C21ADCAF910041410D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		B37E07C31ADCAF910041410D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B37E07C41ADCAF910041410D /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -194,8 +191,6 @@
 				B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */,
 				B37E079A1ADCAF0B0041410D /* AppDelegate.h */,
 				B37E079B1ADCAF0B0041410D /* AppDelegate.m */,
-				B37E07BF1ADCAF360041410D /* UberLoginViewController.h */,
-				B37E07C01ADCAF360041410D /* UberLoginViewController.m */,
 				B37E07A31ADCAF0B0041410D /* Main.storyboard */,
 				B37E07EB1AE5D9E90041410D /* SetPickupDropoffViewController.h */,
 				B37E07EC1AE5D9E90041410D /* SetPickupDropoffViewController.m */,
@@ -385,7 +380,6 @@
 				B37E08171AE706710041410D /* RideInfoViewController.m in Sources */,
 				B37E079C1ADCAF0B0041410D /* AppDelegate.m in Sources */,
 				B37E07EA1AE4A3D10041410D /* AddSafeRideViewController.m in Sources */,
-				B37E07C11ADCAF360041410D /* UberLoginViewController.m in Sources */,
 				B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */,
 				B37E07991ADCAF0B0041410D /* main.m in Sources */,
 				B3EF88B41AEB5013007588E5 /* UberCommands.m in Sources */,
