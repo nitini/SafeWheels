@@ -86,6 +86,9 @@
         PFGeoPoint* dropoff = [PFGeoPoint geoPointWithLatitude:_dropoffLocation.latitude
                                                     longitude:_dropoffLocation.longitude];
         safeRide[@"DropoffLocation"] = dropoff;
+        PFUser* currentUser = [PFUser currentUser];
+        NSString* userId = currentUser.objectId;
+        safeRide[@"UserID"] = userId;
         
         [safeRide saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {

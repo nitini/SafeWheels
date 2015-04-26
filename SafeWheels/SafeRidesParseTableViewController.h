@@ -13,8 +13,10 @@
 #import "UberKit.h"
 #import "UberCommands.h"
 #import "RideInfoViewController.h"
+#import "SafeWheelsSignUpViewController.h"
 
 @interface SafeRidesParseTableViewController : PFQueryTableViewController
 
-@property (strong, nonatomic) NSString* parentPassword;
+@property (strong, nonatomic) NSString* dummyPassword;
+@property BOOL hasUberAuthenticated;
 @end

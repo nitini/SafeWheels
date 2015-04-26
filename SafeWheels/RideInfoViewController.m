@@ -26,8 +26,7 @@
     [super viewDidLoad];
     
     _uberController = [UberCommands getInstance];
-    NSString* tempRequestId = @"f10f4866-efbd-47f7-bf8d-a16e44eefa1d";
-    _requestDetails = [_uberController getRequestDetails:tempRequestId];
+    _requestDetails = [_uberController getRequestDetails:_requestId];
     NSDictionary* driverDetails =[_requestDetails objectForKey:@"driver"];
     NSDictionary* vehicleDetails = [_requestDetails objectForKey:@"vehicle"];
     _etaInfo.text = [[_requestDetails objectForKey:@"eta"] stringValue];

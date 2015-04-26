@@ -38,6 +38,7 @@
 		B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */; };
 		B37E08171AE706710041410D /* RideInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08161AE706710041410D /* RideInfoViewController.m */; };
 		B3EF88B41AEB5013007588E5 /* UberCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF88B31AEB5013007588E5 /* UberCommands.m */; };
+		B3EF88BD1AECBB20007588E5 /* SafeWheelsSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF88BC1AECBB20007588E5 /* SafeWheelsSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		B37E08161AE706710041410D /* RideInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideInfoViewController.m; sourceTree = "<group>"; };
 		B3EF88B21AEB5013007588E5 /* UberCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UberCommands.h; sourceTree = "<group>"; };
 		B3EF88B31AEB5013007588E5 /* UberCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UberCommands.m; sourceTree = "<group>"; };
+		B3EF88BB1AECBB20007588E5 /* SafeWheelsSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWheelsSignUpViewController.h; sourceTree = "<group>"; };
+		B3EF88BC1AECBB20007588E5 /* SafeWheelsSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWheelsSignUpViewController.m; sourceTree = "<group>"; };
 		FAB2C219529F1E3FBCDD78D0 /* Pods-SafeWheels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeWheels.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeWheels/Pods-SafeWheels.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +184,8 @@
 		B37E07951ADCAF0B0041410D /* SafeWheels */ = {
 			isa = PBXGroup;
 			children = (
+				B3EF88BB1AECBB20007588E5 /* SafeWheelsSignUpViewController.h */,
+				B3EF88BC1AECBB20007588E5 /* SafeWheelsSignUpViewController.m */,
 				B3EF88B21AEB5013007588E5 /* UberCommands.h */,
 				B3EF88B31AEB5013007588E5 /* UberCommands.m */,
 				B37E08151AE706710041410D /* RideInfoViewController.h */,
@@ -376,6 +381,7 @@
 			files = (
 				B37E07ED1AE5D9E90041410D /* SetPickupDropoffViewController.m in Sources */,
 				B37E079F1ADCAF0B0041410D /* SafeWheels.xcdatamodeld in Sources */,
+				B3EF88BD1AECBB20007588E5 /* SafeWheelsSignUpViewController.m in Sources */,
 				B37E08171AE706710041410D /* RideInfoViewController.m in Sources */,
 				B37E079C1ADCAF0B0041410D /* AppDelegate.m in Sources */,
 				B37E07EA1AE4A3D10041410D /* AddSafeRideViewController.m in Sources */,

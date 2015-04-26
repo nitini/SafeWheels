@@ -85,6 +85,7 @@
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
+    //In reality _accessToken would be used here, but for now , use _permaAccessToken for testing purposes
     [request setValue:[NSString stringWithFormat:@"Bearer %@", _permaAccessToken] forHTTPHeaderField:@"Authorization"];
     NSURLResponse *response = nil;
     NSError *error = nil;
@@ -93,7 +94,7 @@
     {
         NSError *jsonError = nil;
         NSDictionary *requestDetailsDictionary = [NSJSONSerialization JSONObjectWithData:requestDetailsData options:0 error:&jsonError];
-        NSLog(@"%@", requestDetailsDictionary);
+        NSLog(@"Request Details Dictionary %@", requestDetailsDictionary);
         return requestDetailsDictionary;
     }
     else
@@ -112,19 +113,7 @@
     [request setValue:[NSString stringWithFormat:@"Bearer %@", _permaAccessToken] forHTTPHeaderField:@"Authorization"];
     NSURLResponse *response = nil;
     NSError *error = nil;
-    NSData *requestDetailsData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSLog(@"%@", response);
-    if(!error)
-    {
-        NSError *jsonError = nil;
-        NSDictionary *requestDetailsDictionary = [NSJSONSerialization JSONObjectWithData:requestDetailsData options:0 error:&jsonError];
-        NSLog(@"%@", requestDetailsDictionary);
-    }
-    else
-    {
-        NSLog(@"Error in sending request for access token %@", error);
-    }
-
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
 }
 
 - (NSString*) getUberProductIdAtLocation:(CLLocation*)startLocation uberType:(NSString*)uberType
@@ -164,7 +153,7 @@
 - (void) uberKit: (UberKit *) uberKit didReceiveAccessToken: (NSString *) accessToken
 {
     _accessToken = [_uberKit getStoredAuthToken];
-    NSLog(@"%@", _accessToken);
+    NSLog(@"Access Token: %@", _accessToken);
 }
 
 

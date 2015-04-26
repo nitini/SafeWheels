@@ -8,7 +8,7 @@
 
 #import "SafeRidesParseTableViewController.h"
 
-@interface SafeRidesParseTableViewController () <UberKitDelegate, UIAlertViewDelegate>
+@interface SafeRidesParseTableViewController () <UberKitDelegate, UIAlertViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property(strong, nonatomic) UberKit* uberKit;
 @property (strong, nonatomic) NSString* perma_access_token;
@@ -24,8 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(logoutUser)];
+    UIBarButtonItem *editProfileButton = [[UIBarButtonItem alloc] initWithTitle:@"Authorize Uber" style:UIBarButtonItemStyleDone target:self action:@selector(editProfile)];
+    [self setToolbarItems:[NSArray arrayWithObjects:logoutButton, editProfileButton, nil]];
     [self.navigationController setToolbarHidden:NO];
-    _parentPassword = @"password";
+    _dummyPassword = @"password";
     _uberController = [UberCommands getInstance];
     
     // Do any additional setup after loading the view.
@@ -33,7 +36,28 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self loadObjects];
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Create the sign up view controller
+        SafeWheelsSignUpViewController *signUpViewController = [[SafeWheelsSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        [signUpViewController setFields:PFSignUpFieldsDefault | PFSignUpFieldsAdditional];
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    } else {
+        [self loadObjects];
+    }
+}
+
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
@@ -49,8 +73,43 @@
     return self;
 }
 
+-(void)logoutUser
+{
+    
+    _alertViewFunction = @"logout";
+    UIAlertView *confirmALert = [[UIAlertView alloc]
+                                 initWithTitle:@"Confirm Logout"
+                                 message:@"Are you sure you would like to logout?"
+                                 delegate:self cancelButtonTitle:@"Yes"
+                                 otherButtonTitles:@"No", nil];
+    
+    // Display Alert Message
+    [confirmALert show];
+
+    
+    
+}
+
+-(void) editProfile
+{
+    [_uberController startUberLogin];
+    /*
+    _alertViewFunction = @"edit";
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Enter your password:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Submit", nil];
+    alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+    [alert show];
+     */
+    
+}
+
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:@"SafeRide"];
+    NSString* userObjectId = @"No ID if Not Logged in";
+    if ([PFUser currentUser]) {
+        PFUser *user = [PFUser currentUser];
+        userObjectId = user.objectId;
+    }
+    [query whereKey:@"UserID" equalTo:userObjectId];
     
     // If no objects are loaded in memory, we look to the cache
     // first to fill the table and then subsequently do a query
@@ -113,7 +172,7 @@
         
         if (buttonIndex == 1) {
             NSString* enteredPassword = [[alertView textFieldAtIndex:0] text];
-            if ([enteredPassword isEqualToString:_parentPassword]) {
+            if ([enteredPassword isEqualToString:_dummyPassword]) {
                 [self performSegueWithIdentifier:@"addRideSegue" sender:self];
             } else {
                 UIAlertView* incorrectPasswordAlert = [[UIAlertView alloc] initWithTitle:@"Wrong Password"
@@ -130,7 +189,7 @@
     } else if ([_alertViewFunction isEqualToString:@"delete"]) {
         if (buttonIndex == 1) {
             NSString* enteredPassword = [[alertView textFieldAtIndex:0] text];
-            if ([enteredPassword isEqualToString:_parentPassword]) {
+            if ([enteredPassword isEqualToString:_dummyPassword]) {
                 PFObject *object = [self.objects objectAtIndex:[_deleteIndexPath row]];
                 
                 [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -158,7 +217,38 @@
             [self performSegueWithIdentifier:@"showRideInfoSegue" sender:self];
             
         }
+    } else if ([_alertViewFunction isEqualToString:@"logout"]) {
+        if (buttonIndex == 1) {
+            [alertView dismissWithClickedButtonIndex:-1 animated:YES];
+        } else {
+            [PFUser logOut];
+            PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+            [logInViewController setDelegate:self];
+            [self presentViewController:logInViewController animated:YES completion:NULL];
+        }
+    } else if([_alertViewFunction isEqualToString:@"edit"]) {
+        /*
+        if (buttonIndex == 1) {
+            NSString* enteredPassword = [[alertView textFieldAtIndex:0] text];
+            if ([enteredPassword isEqualToString:_dummyPassword]) {
+                [self performSegueWithIdentifier:@"editProfileSegue" sender:self];
+            } else {
+                UIAlertView* incorrectPasswordAlert = [[UIAlertView alloc] initWithTitle:@"Wrong Password"
+                                                                                 message:@" \n Please enter the correct password"
+                                                                                delegate:nil
+                                                                       cancelButtonTitle:nil
+                                                                       otherButtonTitles:nil];
+                [incorrectPasswordAlert show];
+                [self performSelector:@selector(alertViewDelayedDismiss:) withObject:incorrectPasswordAlert afterDelay:1];
+            }
+        } else {
+            [alertView dismissWithClickedButtonIndex:-1 animated:YES];
+        }
+
+        */
     }
+    
+    
 
 }
 
