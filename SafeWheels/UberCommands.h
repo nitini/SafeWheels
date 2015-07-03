@@ -28,6 +28,7 @@
 - (NSString*) getUberProductIdAtLocation:(CLLocation*)startLocation uberType:(NSString*)uberType;
 - (void) startUberLogin;
 - (void) cancelUberRequest:(NSString*)requestId;
+- (void) changeUberRequestStatus:(NSString*)requestId status:(NSString*)status;
 
 
 @end

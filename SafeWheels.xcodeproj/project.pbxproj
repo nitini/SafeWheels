@@ -36,6 +36,8 @@
 		B37E07EF1AE5DF000041410D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37E07EE1AE5DF000041410D /* MapKit.framework */; };
 		B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */; };
 		B37E08171AE706710041410D /* RideInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37E08161AE706710041410D /* RideInfoViewController.m */; };
+		B3E1A9C61AFB0A8E009BA90A /* SafeWheelsLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1A9C51AFB0A8E009BA90A /* SafeWheelsLoginViewController.m */; };
+		B3E1A9C91AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1A9C81AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.m */; };
 		B3EF88B41AEB5013007588E5 /* UberCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF88B31AEB5013007588E5 /* UberCommands.m */; };
 		B3EF88BD1AECBB20007588E5 /* SafeWheelsSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EF88BC1AECBB20007588E5 /* SafeWheelsSignUpViewController.m */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,10 @@
 		B37E08101AE6F3640041410D /* SafeRidesParseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeRidesParseTableViewController.m; sourceTree = "<group>"; };
 		B37E08151AE706710041410D /* RideInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideInfoViewController.h; sourceTree = "<group>"; };
 		B37E08161AE706710041410D /* RideInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideInfoViewController.m; sourceTree = "<group>"; };
+		B3E1A9C41AFB0A8E009BA90A /* SafeWheelsLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWheelsLoginViewController.h; sourceTree = "<group>"; };
+		B3E1A9C51AFB0A8E009BA90A /* SafeWheelsLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWheelsLoginViewController.m; sourceTree = "<group>"; };
+		B3E1A9C71AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWheelsParentSignUpViewController.h; sourceTree = "<group>"; };
+		B3E1A9C81AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeWheelsParentSignUpViewController.m; sourceTree = "<group>"; };
 		B3EF88B21AEB5013007588E5 /* UberCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UberCommands.h; sourceTree = "<group>"; };
 		B3EF88B31AEB5013007588E5 /* UberCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UberCommands.m; sourceTree = "<group>"; };
 		B3EF88BB1AECBB20007588E5 /* SafeWheelsSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeWheelsSignUpViewController.h; sourceTree = "<group>"; };
@@ -192,6 +198,10 @@
 				B37E079A1ADCAF0B0041410D /* AppDelegate.h */,
 				B37E079B1ADCAF0B0041410D /* AppDelegate.m */,
 				B37E07A31ADCAF0B0041410D /* Main.storyboard */,
+				B3E1A9C71AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.h */,
+				B3E1A9C81AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.m */,
+				B3E1A9C41AFB0A8E009BA90A /* SafeWheelsLoginViewController.h */,
+				B3E1A9C51AFB0A8E009BA90A /* SafeWheelsLoginViewController.m */,
 				B37E07EB1AE5D9E90041410D /* SetPickupDropoffViewController.h */,
 				B37E07EC1AE5D9E90041410D /* SetPickupDropoffViewController.m */,
 				B37E07E81AE4A3D10041410D /* AddSafeRideViewController.h */,
@@ -290,6 +300,7 @@
 				TargetAttributes = {
 					B37E07921ADCAF0B0041410D = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = C6J4GC6S7J;
 					};
 					B37E07AE1ADCAF0B0041410D = {
 						CreatedOnToolsVersion = 6.2;
@@ -377,10 +388,12 @@
 				B37E07ED1AE5D9E90041410D /* SetPickupDropoffViewController.m in Sources */,
 				B37E079F1ADCAF0B0041410D /* SafeWheels.xcdatamodeld in Sources */,
 				B3EF88BD1AECBB20007588E5 /* SafeWheelsSignUpViewController.m in Sources */,
+				B3E1A9C61AFB0A8E009BA90A /* SafeWheelsLoginViewController.m in Sources */,
 				B37E08171AE706710041410D /* RideInfoViewController.m in Sources */,
 				B37E079C1ADCAF0B0041410D /* AppDelegate.m in Sources */,
 				B37E07EA1AE4A3D10041410D /* AddSafeRideViewController.m in Sources */,
 				B37E08111AE6F3640041410D /* SafeRidesParseTableViewController.m in Sources */,
+				B3E1A9C91AFB0AF1009BA90A /* SafeWheelsParentSignUpViewController.m in Sources */,
 				B37E07991ADCAF0B0041410D /* main.m in Sources */,
 				B3EF88B41AEB5013007588E5 /* UberCommands.m in Sources */,
 			);
@@ -505,13 +518,18 @@
 			baseConfigurationReference = 0E9AF4AEC5E04AF6B31C5EC2 /* Pods-SafeWheels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nitin Iyer (QQM4YC9934)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SafeWheels/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2fb966ba-275e-4279-8f0e-b106ae5efb7e";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -520,13 +538,18 @@
 			baseConfigurationReference = FAB2C219529F1E3FBCDD78D0 /* Pods-SafeWheels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nitin Iyer (QQM4YC9934)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SafeWheels/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2fb966ba-275e-4279-8f0e-b106ae5efb7e";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

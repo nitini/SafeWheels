@@ -26,7 +26,8 @@
     [super viewDidLoad];
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(logoutUser)];
     UIBarButtonItem *editProfileButton = [[UIBarButtonItem alloc] initWithTitle:@"Authorize Uber" style:UIBarButtonItemStyleDone target:self action:@selector(editProfile)];
-    [self setToolbarItems:[NSArray arrayWithObjects:logoutButton, editProfileButton, nil]];
+    UIBarButtonItem *loginButton = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStyleDone target:self action:@selector(testLogIn)];
+    [self setToolbarItems:[NSArray arrayWithObjects:logoutButton, editProfileButton, loginButton, nil]];
     [self.navigationController setToolbarHidden:NO];
     _dummyPassword = @"password";
     _uberController = [UberCommands getInstance];
@@ -52,6 +53,11 @@
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
     } else {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        PFUser *user = [PFUser currentUser];
+        NSString* objectId = [user objectId];
+        currentInstallation[@"safeWheelsUserId"] = objectId;
+        [currentInstallation saveInBackground];
         [self loadObjects];
     }
 }
@@ -87,6 +93,12 @@
     [confirmALert show];
 
     
+    
+}
+
+- (void) testLogIn {
+    
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
     
 }
 
@@ -348,8 +360,15 @@
                       end_lat:(float)endLocation.latitude
                      end_long:(float)endLocation.longitude];
         NSLog(@"%@", requestId);
-        
+        PFUser *user = [PFUser currentUser];
+        NSString *objectId = [user objectId];
+        PFObject *rideRequest = [PFObject objectWithClassName:@"RideRequest"];
+        rideRequest[@"requestId"] = requestId;
+        rideRequest[@"requestingUserId"] = objectId;
+        rideRequest[@"savedRide"] = ride;
+        [rideRequest saveInBackground];
         //BREAKPOINT HERE TO CHANGE REQUEST STATUS
+        [_uberController changeUberRequestStatus:requestId status:@"accepted"];
         
         RideInfoViewController* destController = [segue destinationViewController];
         destController.requestId = requestId;

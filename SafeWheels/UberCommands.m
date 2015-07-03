@@ -15,7 +15,7 @@
         _clientId = @"oShtBtA4Lh44kNEsUsDl2cFavZkJsTfs";
         _clientSecret = @"31aEn8fh5iyBb8dGxXF8Jjjacr8V2h2yn0VrDPa3";
         _serverToken = @"2XO_nTpi3YijHxcW03iLsTB_8JyYP4dXD2Gb1xLw";
-        _permaAccessToken = @"j9TrwQpkzxf3T02djO9XHF77142TER";
+        _permaAccessToken = @"iQAJqusGQmSoHTiaIvcDfcMDYpgQyf";
 
         _uberKit = [[UberKit alloc] initWithClientID:self.clientId
                              ClientSecret:self.clientSecret
@@ -100,8 +100,39 @@
     }
     else
     {
-        NSLog(@"Error in sending request for access token %@", error);
+        NSLog(@"Error in getting Request Details %@", error);
         return [[NSDictionary alloc] initWithObjectsAndKeys:@"Error", @"JSON not receieved", nil];
+    }
+}
+
+- (void) changeUberRequestStatus:(NSString*)requestId status:(NSString*)status
+{
+    NSString *url = [NSString stringWithFormat:@"https://sandbox-api.uber.com/v1/sandbox/requests/%@",requestId];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", _permaAccessToken] forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSDictionary* statusDictionary = @{@"status": status};
+    
+    [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:statusDictionary options:NSJSONWritingPrettyPrinted error:nil]];
+    
+    
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    
+    NSData *statusData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+
+    if(!error)
+    {
+        NSError *jsonError = nil;
+        NSDictionary *statusResultsDictionary = [NSJSONSerialization JSONObjectWithData:statusData options:0 error:&jsonError];
+        NSLog(@"Status Dictionary %@", statusResultsDictionary);
+    }
+    else
+    {
+        NSLog(@"Error in changing Uber Status %@", error);
     }
 }
 

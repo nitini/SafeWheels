@@ -12,7 +12,7 @@
 #import "Parse/Parse.h"
 #import "ParseUI/ParseUI.h"
 
-@interface AddSafeRideViewController : UIViewController
+@interface AddSafeRideViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic, readwrite) CLLocationCoordinate2D pickupLocation;
 @property (nonatomic, readwrite) CLLocationCoordinate2D dropoffLocation;
 @property (strong, nonatomic) NSString* pickupAddress;

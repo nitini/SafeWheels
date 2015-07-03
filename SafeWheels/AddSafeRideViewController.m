@@ -22,7 +22,19 @@
     _dropoffAddress = @"";
     _pickupTextField.text = _pickupAddress;
     _dropoffTextField.text = _dropoffAddress;
+    
+    _pickupTextField.delegate = self;
+    _dropoffTextField.delegate = self;
+    _estimatedTimeTextField.delegate = self;
+    _rideNameTextField.delegate = self;
+    _contactNumberTextField.delegate = self;
+    
     // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -101,6 +113,22 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
+-(void)dismissKeyboard {
+    [self.view endEditing:YES];
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+    [theTextField resignFirstResponder];
+    
+    return YES;
+}
+
+
+
+
 
 - (IBAction)unwindToAddSafeRide:(UIStoryboardSegue*)unwindSegue
 {
